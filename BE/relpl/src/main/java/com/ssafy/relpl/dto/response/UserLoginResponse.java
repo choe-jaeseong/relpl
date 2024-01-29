@@ -28,7 +28,7 @@ public class UserLoginResponse {
                 .userTotalDistance(2000)
                 .userPhone(user.getUserPhone())
                 .userTotalReport(10)
-                .userImage("jaeseong.jpg")
+                .userImage(user.getUserImage())
                 .accessToken("accessToken")
                 .refreshToken("refreshToken")
                 .build();
