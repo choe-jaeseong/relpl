@@ -56,7 +56,7 @@ public class JwtTokenProvider {
     }
 
     /**
-     * Refresh 토큰 생성..
+     * Refresh 토큰 생성
      */
     public String createRefreshToken(Authentication authentication){
         Claims claims = Jwts.claims().setSubject(authentication.getName());
