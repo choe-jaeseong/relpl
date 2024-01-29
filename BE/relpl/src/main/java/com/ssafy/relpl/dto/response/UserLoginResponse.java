@@ -1,6 +1,5 @@
 package com.ssafy.relpl.dto.response;
 
-import com.mongodb.annotations.Sealed;
 import com.ssafy.relpl.db.postgre.entity.User;
 import lombok.Builder;
 import lombok.Getter;
