@@ -23,7 +23,8 @@
 
 ## 팀원소개
 
-<center>  
+
+<div align="center"> 
 <table>
   <tr>
     <td style="text-align: center;"><img src="https://blog.kakaocdn.net/dn/d2Sec4/btsETi7NKEO/kQCJxQQVCoJq529c02jVIK/img.jpg" width="200" alt="정철주"></td>
@@ -60,7 +61,7 @@
     <td style="text-align: center;">Back-End(Spring)</td>
   </tr>
 </table>
-</center>
+</div>
 <br/><br/><br/><br/><br/><br/>
 
 ## 기능, 동작 화면
@@ -103,7 +104,7 @@
 
 ## 개발 환경
 
-- Android Studio : Giraffe 2022.3.1 Patch 2
+- Android Studio : Giraffe 2022.3.1 Patch 2(or 3)
 - Gradle JDK : jbr-17(JetBrains Runtime version 17.0.6)
 - Android Gradle Plugin Version : 8.1.3
 - Gradle Version : 8.1
