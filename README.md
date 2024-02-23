@@ -105,6 +105,194 @@
 |                                    릴레이 중단                                     |                                    릴레이 기록                                     |                                  릴레이 상세 기록                                   |
 
 <br/><br/><br/><br/><br/>
+
+
+
+ <h1 align="center">
+백엔드
+</h1>
+
+## 설계
+
+### 시스템 아키텍쳐
+![image](https://github.com/SungHoonKim-Ski/relpl/assets/57925467/7e32d55b-0f26-42b5-a426-f9d459e7af33)
+
+### ERD 다이어그램
+![image](https://github.com/SungHoonKim-Ski/relpl/assets/57925467/bb96eb1a-39a1-4785-9451-bb1e2e3d3e2f)
+
+- [요구사항 명세서](https://docs.google.com/spreadsheets/d/1ZayfMIxvD49W1cAYiXdvZzePvYK2iXs2G8KfIWohgio/edit?usp=sharing)
+
+- [API 명세서](https://grand-check-7ba.notion.site/API-33f7e2f1f2e14a1683b82493a37beebd?pvs=4)
+  
+- [피그마 링크](https://www.figma.com/file/CNQG7GcXmt00S7lykwbBrp/GDD?type=design&node-id=0-1&mode=design)
+
+
+---
+
+## 사용한 기술
+
+### 사용한 라이브러리
+
+- Spring Boot
+- Spring Security & JWT
+- JPA & Hibernate
+- AWS
+- Jasypt
+- Firebase
+
+### 사용한 데이터베이스
+- MongoDB
+- PostgreSQL(PostGIS)
+- Redis
+
+### 디렉토리 구조
+
+### relpl
+```bash
+├── business
+│   ├── ProjectCreateRouteBusiness.java
+│   └── ProjectRecommendBusiness.java
+├── config
+│   ├── AWSS3Config.java
+│   ├── FCMConfig.java
+│   ├── GeomFactoryConfig.java
+│   ├── JasyptConfig.java
+│   ├── SecurityConfig.java
+│   └── SwaggerConfig.java
+├── controller.rest
+│   ├── CoinController.java
+│   ├── FcmTokencontroller.java
+│   ├── FileUploadController.java
+│   ├── MypageController.java
+│   ├── ProjectController.java
+│   ├── RankingController.java
+│   ├── ReportController.java
+│   └── UserController.java
+├── db
+│   ├── mongo
+│   │   ├── entity
+│   │   │   └── ...
+│   │   └── repository
+│   │       └── ...
+│   ├── postgre
+│   │   ├── entity
+│   │   │   └── ...
+│   │   └── repository
+│   │       └── ...
+│   └── redis
+│       └── entity
+│           └── ...
+├── dto
+│   ├── request
+│   │   └── ...
+│   └── response
+│       └── ...
+├── service
+│   └── ...
+└── util
+    ├── annotation
+    │   └── Business.java
+    ├── common
+    │   ├── Edge.java
+    │   ├── Info.java
+    │   ├── RankingEntry.java
+    │   └── UserHistoryDetailEntry.java
+    └── jwt
+        ├── CustomUserDetails.java
+        ├── ExceptionResponseHandler.java
+        ├── JwtAccessDeniedHandler.java
+        ├── JwtAuthenticationEntryPoint.java
+        ├── JwtConstants.java
+        ├── JwtFilter.java
+        └── JwtTokenProvider.java
+```
+
+### initDB_relpl
+```bash
+├── config
+│   ├── JasyptConfig.java
+├── controller.rest
+│   └── TmapController.kt
+├── db
+│   ├── mongo
+│   │   ├── entity
+│   │   │   └── TmapRoad.java
+│   │   └── repository
+│   │       └── TmapRoadRepositroy.java
+│   └── postgre
+│       ├── entity
+│       │   ├── PointHash.java
+│       │   ├── PointHash.java
+│       │   └── RoadInfo.java
+│       └── repository
+│           ├── PointHashRepositroy.java
+│           ├── PointHashRepositroy.java
+│           └── RoadInfoRepositroy.java
+├── dto
+│   ├── request
+│   │   ├── InsertRoadRequestDto.kt
+│   │   ├── TimesRoadRequestDto.kt
+│   │   └── RoadRequest.java
+│   └── response
+│       └── TmapApiResponseDTO.java
+├── service
+│   └── TmapService.kt
+└── util
+    └── common
+        ├── RoadData.kt
+        └── TmapData.kt
+```
+
+## Back-End Role & Responsibility (R&R)
+
+#### 김성훈
+
+- 인프라
+
+- 백엔드 초기 환경 구축
+
+- 백엔드 구조 설계
+  
+- 데이터베이스 설계
+  
+- Tmap API 를 활용한 초기 도로 DB 구축(InitDB)
+
+- 릴레이 플로깅 생성 API
+
+- 플로깅 경로 추천 기능
+
+#### 최재성
+
+- 데이터베이스 설계
+
+- Tmap API 를 활용한 초기 도로 DB 구축(InitDB)
+
+- jwt, Spring Security 를 이용한 회원가입, 로그인 API
+
+- 릴레이 플로깅 참여, 중단 API
+
+- FCM 기능
+
+#### 김효주
+
+- Redis 를 활용한 실시칸 랭킹 API
+
+- 사진 업로드 및 프로필 설정 API
+
+- 마이페이지 API
+
+- 내 플로깅 기록 보기 API
+
+#### 송민석
+
+- 포인트 관련 기능
+
+- 플로깅 장소 제보 기능
+
+- 릴레이 플로깅 정보 조회 기능
+
+<br/><br/><br/><br/><br/>
+
  <h1 align="center">
 안드로이드
 </h1>
@@ -121,10 +309,6 @@
 - UI Library : <span style="color:skyblue"> StickyTimeLine, Pager Dots Indicator
 , Floating Action Button Speed Dial, Lottie </span>
 - Architecture : <span style="color:gray"> MVVM, MultiModule, CleanArchitecture</span>
-
-<br/><br/><br/>
-
-### [피그마 링크](https://www.figma.com/file/TaVoVQpe1XfXl5K0w5JQ8f/%EB%B0%B8%EB%9F%B0%EC%8A%A4%EA%B2%8C%EC%9E%84?type=design&node-id=0%3A1&mode=design&t=pWdO1poXzxwOOz6e-1)
 
 <br/><br/><br/>
 
@@ -155,88 +339,3 @@
   - 프로필, 회원정보 수정
 - 내 플로깅 기록, 상세 기록
 - JWT 토큰 대응
-
-<br/><br/><br/><br/><br/>
-
- <h1 align="center">
-백엔드
-</h1>
-
-## 설계
-
-### 시스템 아키텍쳐
-![](https://blog.kakaocdn.net/dn/SIWQC/btsEVOToYqw/9lDCjOphFtE0zlKzCFSWBK/img.png)
-
-### ERD 다이어그램
-![](https://blog.kakaocdn.net/dn/IV5N0/btsERlFbYuc/Du9wAf3ra1WO7tSL3uvfb0/img.png)
-
-- [요구사항 명세서](https://docs.google.com/spreadsheets/d/1ZayfMIxvD49W1cAYiXdvZzePvYK2iXs2G8KfIWohgio/edit?usp=sharing)
-
-- [API 명세서](https://grand-check-7ba.notion.site/API-33f7e2f1f2e14a1683b82493a37beebd?pvs=4)
-
----
-
-## 사용한 기술
-
-### 사용한 라이브러리
-
-- Spring Boot Data JPA, MongoDB, Redis
-- Project Lombok
-- PostgreSQL JDBC Driver
-- Spring Boot Starter Test
-- Spring Security Test
-- SpringDoc OpenAPI
-- Hibernate Spatial
-- Jakarta Annotations & Persistence API
-- Spring Cloud AWS
-- Jasypt
-- Spring Boot Starter Security
-- JSON Web Token (JWT)
-- Spring Boot Starter Cache
-- Firebase Admin SDK
-- OkHttp
-
-### 디렉토리 구조
-![](https://blog.kakaocdn.net/dn/4igCf/btsERklWOxL/quhS0fCz2XSxIo3ZIkJ9J1/img.png)
-
-![](https://blog.kakaocdn.net/dn/tsVZV/btsES6AMKdH/gdLQvDmJSmXtwRswgXhDe1/img.png)
-
-## Back-End Role & Responsibility (R&R)
-
-#### 김성훈
-
-- 인프라 (CI/CD)
-
-- 릴레이 플로깅 생성 기능
-
-- Tmap API 를 활용한 초기 도로 DB 구축
-
-- 경로 추천 기능
-
-#### 최재성
-
-- jwt , Spring Security 를 이용한 회원가입 API 개발
-
-- jwt , Spring Security 를 이용한 로그인 API 개발
-
-- 릴레이 플로깅 참여 API 개발
-
-- 릴레이 플로깅 중단 API 개발
-
-#### 김효주
-
-- Redis 를 활용한 실시칸 랭킹 API 개발
-
-- PostGreSQL 활용하여 Amazon S3 사진 업로드 가능한 프로필 설정 API 개발
-
-- PostGreSQL 활용하여 프로필 사진 변경이 가능한 마이페이지 API 개발
-
-- mongoDB, PostGreSQL, Spring Data 를 활용한 내 플로깅 기록 보기 API 개발
-
-#### 송민석
-
-- 포인트 관련 기능
-
-- 플로깅 장소 제보 기능
-
-- 릴레이 플로깅 정보 조회 기능
