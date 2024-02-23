@@ -1,6 +1,6 @@
 package com.ssafy.relpl.controller.rest;
 
-import com.ssafy.relpl.dto.User;
+import com.ssafy.relpl.db.postgre.entity.User;
 import com.ssafy.relpl.dto.response.SampleResponseDto;
 import com.ssafy.relpl.dto.response.SampleResponseDto2;
 import com.ssafy.relpl.service.ResponseService;
@@ -8,7 +8,6 @@ import com.ssafy.relpl.service.UserService;
 import com.ssafy.relpl.service.result.SingleResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,8 +35,9 @@ public class SampleController {
     public ResponseEntity<?> getSample(@PathVariable String path1, @PathVariable String path2) {
 
         SingleResult<SampleResponseDto> result = new SingleResult<>();
+         responseService.getSingleResult("data", "OK", 200);
         result.setCode(200);
-        result.setMsg("뭔가뭔가 성공");
+        result.setMessage("뭔가뭔가 성공");
         result.setData(SampleResponseDto
                 .builder()
                 .test1(path1)
@@ -56,7 +56,7 @@ public class SampleController {
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         SingleResult<SampleResponseDto2> result = new SingleResult<>();
         result.setCode(400);
-        result.setMsg("뭔가뭔가 실패");
+        result.setMessage("뭔가뭔가 실패");
         return ResponseEntity.badRequest().body(result);
     }
 }
